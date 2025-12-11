@@ -1,0 +1,117 @@
+{
+  "info": {
+    "name": "Organization Management Service",
+    "_postman_id": "b12acd1c-5e8f-4c31-a91e-orgservice",
+    "description": "Postman Collection for testing Organization Management Service APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"organization_name\": \"MIT Academy\",\n  \"email\": \"admin@mit.com\",\n  \"password\": \"pass1234\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/org/create",
+          "protocol": "http",
+          "host": ["127","0","0","1"],
+          "port": "8000",
+          "path": ["org","create"]
+        }
+      }
+    },
+    {
+      "name": "2. Get Organization",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/org/get?organization_name=MIT Academy",
+          "protocol": "http",
+          "host": ["127","0","0","1"],
+          "port": "8000",
+          "path": ["org","get"],
+          "query": [
+            { "key": "organization_name", "value": "MIT Academy" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Admin Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@mit.com\",\n  \"password\": \"pass1234\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/admin/login",
+          "protocol": "http",
+          "host": ["127","0","0","1"],
+          "port": "8000",
+          "path": ["admin","login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Update Organization",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"organization_name\": \"MIT Academy\",\n  \"email\": \"newadmin@mit.com\",\n  \"password\": \"newpass123\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/org/update",
+          "protocol": "http",
+          "host": ["127","0","0","1"],
+          "port": "8000",
+          "path": ["org","update"]
+        }
+      }
+    },
+    {
+      "name": "5. Delete Organization",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/org/delete?organization_name=MIT Academy",
+          "protocol": "http",
+          "host": ["127","0","0","1"],
+          "port": "8000",
+          "path": ["org","delete"],
+          "query": [
+            { "key": "organization_name", "value": "MIT Academy" }
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
